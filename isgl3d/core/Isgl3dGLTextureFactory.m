@@ -186,7 +186,7 @@ static Isgl3dGLTextureFactory * _instance = nil;
         
 		void * data = malloc(width * height * 4);
 		[self copyImage:image toRawData:data width:width height:height];
-		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:YES precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
+		unsigned int textureId = [_state createTextureFromRawData:data width:width height:height mipmap:NO precision:precision repeatX:repeatX repeatY:repeatY mirrorX:mirrorX mirrorY:mirrorY];
 		free(data);
 		
 		// Create texture and store in dictionary
