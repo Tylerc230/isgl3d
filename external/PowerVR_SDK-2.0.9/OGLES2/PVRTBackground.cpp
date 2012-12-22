@@ -210,7 +210,7 @@ EPVRTError CPVRTBackground::Init(const SPVRTContext * const pContext, bool bRota
 	return PVR_SUCCESS;
 }
 
-
+#if defined(BUILD_OGL) || defined(BUILD_OGLES) || defined(BUILD_OGLES2) || defined(BUILD_OGLES3)
 /*!***************************************************************************
  @Function		Draw
  @Input			ui32Texture	Texture to use
@@ -254,7 +254,7 @@ EPVRTError CPVRTBackground::Draw(const GLuint ui32Texture)
 
 	return PVR_SUCCESS;
 }
-
+#endif
 /*****************************************************************************
  End of file (CPVRTBackground.cpp)
 *****************************************************************************/
