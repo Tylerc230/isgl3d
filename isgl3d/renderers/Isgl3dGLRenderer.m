@@ -264,5 +264,9 @@
 	return NO;
 }
 
+- (BOOL)unregisterCustomShader:(Isgl3dCustomShader *)shader
+{
+    return NO;
+}
 
 @end

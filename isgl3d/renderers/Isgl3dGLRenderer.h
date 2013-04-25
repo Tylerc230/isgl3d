@@ -160,6 +160,7 @@ typedef enum {
 
 
 - (BOOL) registerCustomShader:(Isgl3dCustomShader *)shader;
+- (BOOL)unregisterCustomShader:(Isgl3dCustomShader *)shader;
 
 
 @end

@@ -431,20 +431,6 @@
 }
 
 - (void)onRenderPhaseBeginsWithDeltaTime:(float)dt {
-	// Clean up of custom shaders (remove any that are no longer retained)
-	NSMutableArray * unretainedShaders = [NSMutableArray arrayWithCapacity:1];
-	for (NSString * key in _customShaders) {
-		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
-		if ([shader retainCount] == 1) {
-			[unretainedShaders addObject:key];
-		}
-	} 
-
-	for (NSString * key in unretainedShaders) {
-		Isgl3dClassDebugLog2(Isgl3dLogLevelInfo, @"custom shader with key \"%@\" no longer retained: deleting.", key);
-		[_customShaders removeObjectForKey:key];
-	}	
-	
 	// custom handling of phase event
 	for (NSString * key in _customShaders) {
 		Isgl3dCustomShader * shader = [_customShaders objectForKey:key];
@@ -645,6 +631,16 @@
 	[_customShaders setObject:shader forKey:shader.key];
 	
 	return YES;
+}
+
+- (BOOL)unregisterCustomShader:(Isgl3dCustomShader *)shader
+{
+    if (![_customShaders objectForKey:shader.key]) {
+		Isgl3dClassDebugLog(Isgl3dLogLevelWarn, @"custom shader with key %@ doesn't exist.", shader.key);
+		return NO;
+    }
+    [_customShaders removeObjectForKey:shader.key];
+    return YES;
 }
 
 @end

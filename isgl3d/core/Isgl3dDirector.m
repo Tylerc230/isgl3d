@@ -685,6 +685,9 @@ static Isgl3dDirector * _instance = nil;
 	return [_renderer registerCustomShader:shader];
 }
 
-
+- (BOOL)unregisterCustomShader:(Isgl3dCustomShader *)shader
+{
+    return [_renderer unregisterCustomShader:shader];
+}
 
 @end
